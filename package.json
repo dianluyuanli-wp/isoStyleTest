@@ -1,11 +1,15 @@
 {
     "name": "iso-style",
     "version": "0.0.0",
-    "scripts": {},
+    "scripts": {
+        "start": "node ./bin/start",
+        "dev": "nodemon ./bin/start"
+    },
     "dependencies": {
         "http-errors": "^1.6.2",
         "express": "^4.16.4",
-        "morgan": "^1.9.1"
+        "morgan": "^1.9.1",
+        "ejs": "^2.4.1"
     },
     "devDependencies": {}
 }

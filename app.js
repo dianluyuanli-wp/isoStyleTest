@@ -5,12 +5,15 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 
-var indexRouter = require('./routes');
+var indexRouter = require('./router');
 
 var app = express();
+var ejs = require('ejs');
 
 // view engine setup
-app.set('views', path.join(__dirname, 'view')); // 这里设定了渲染页面时候的默认路径，views/home
+//  这个模板引擎好像是必须设置的，express默认是jade
+app.engine('.html', ejs.renderFile);
+app.set('views', path.join(__dirname, 'view')); // 这里设定了渲染页面时候的默认路径，view/index
 app.set('view engine', 'html');
 
 app.use(logger('dev'));
@@ -22,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 //  app.use第一个参数是路由，后面是回调
 //  use和get的区别是use可以嵌套或者匹配多个规则，get就是单一的返回回调，也就是接口的写法
 app.use('*.html', indexRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
