@@ -8,6 +8,18 @@ var app = require('../app');
 var debug = require('debug')('weather:server');
 var http = require('http');
 
+var webpack = require('webpack');
+var webpackConfig = require('../webpack.config');
+var compiler = webpack(webpackConfig);
+
+// 在这里实现自动化打包观察
+const watching = compiler.watch({
+  aggregateTimeout: 300,
+  poll: undefined
+}, (err, stats) => {
+  //  console.log(stats)
+})
+
 var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 

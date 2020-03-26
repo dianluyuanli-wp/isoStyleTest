@@ -3,13 +3,26 @@
     "version": "0.0.0",
     "scripts": {
         "start": "node ./bin/start",
-        "dev": "nodemon ./bin/start"
+        "dev": "nodemon ./bin/start",
+        "build": "webpack --color --config webpack.config.js"
     },
     "dependencies": {
         "http-errors": "^1.6.2",
         "express": "^4.16.4",
         "morgan": "^1.9.1",
-        "ejs": "^2.4.1"
+        "ejs": "^2.4.1",
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3",
+        "@babel/core": "^7.3.4",
+        "@babel/preset-env": "^7.3.4"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "@babel/plugin-transform-runtime": "^7.3.4",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.6",
+        "css-loader": "^0.28.11",
+        "mini-css-extract-plugin": "^0.4.5",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.2.3"
+    }
 }
