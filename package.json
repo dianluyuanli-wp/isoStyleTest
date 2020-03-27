@@ -4,7 +4,8 @@
     "scripts": {
         "start": "node ./bin/start",
         "dev": "nodemon ./bin/start",
-        "build": "webpack --color --config webpack.config.js"
+        "build": "webpack --color --config webpack.config.js",
+        "sBuild": "webpack --color --config webpack.server.config.js"
     },
     "dependencies": {
         "http-errors": "^1.6.2",
@@ -14,7 +15,8 @@
         "react": "^16.8.3",
         "react-dom": "^16.8.3",
         "@babel/core": "^7.3.4",
-        "@babel/preset-env": "^7.3.4"
+        "@babel/preset-env": "^7.3.4",
+        "isomorphic-style-loader": "^5.1.0"
     },
     "devDependencies": {
         "@babel/plugin-transform-runtime": "^7.3.4",
