@@ -5,7 +5,9 @@
         "start": "node ./bin/start",
         "dev": "nodemon ./bin/start",
         "build": "webpack --color --config webpack.config.js",
-        "sBuild": "webpack --color --config webpack.server.config.js"
+        "sBuild": "webpack --color --config webpack.server.config.js",
+        "rx": "babel-node ./bin/start",
+        "wh": "node ./dist/"
     },
     "dependencies": {
         "http-errors": "^1.6.2",
@@ -19,6 +21,7 @@
         "isomorphic-style-loader": "^5.1.0"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-transform-runtime": "^7.3.4",
         "@babel/preset-react": "^7.0.0",
         "babel-loader": "^8.0.6",

@@ -4,33 +4,36 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     context: path.resolve(__dirname),
     entry: {
-        app: ['./entry/index.js']
+        //  serverEntry: ['./entry/component/index.js']
+        //  whole: ['./bin/start']
+        entry: ['./ano.js']
     },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'commonjs2',
         publicPath: path.resolve(__dirname, 'dist')
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    name: "common",
-                    test: /[\\/]node_modules[\\/]/,
-                    chunks: "initial",
-                    minSize: 30000,   //  注释掉的话也不会打出来
-                    minChunks: 1,   //  如果是2的话一个也抽不出来，因为好多只用了一次
-                    priority: 8 // 优先级
-                }
-            },
-        },
-    },
-    plugins: [
-        new MiniCssExtractPlugin({      //对css进行打包，webpack4推荐语法
-            filename: "[name].css",
-            chunkFilename: "[name].css"
-        })
-    ],
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendor: {
+    //                 name: "common",
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 chunks: "initial",
+    //                 minSize: 30000,   //  注释掉的话也不会打出来
+    //                 minChunks: 1,   //  如果是2的话一个也抽不出来，因为好多只用了一次
+    //                 priority: 8 // 优先级
+    //             }
+    //         },
+    //     },
+    // },
+    // plugins: [
+    //     new MiniCssExtractPlugin({      //对css进行打包，webpack4推荐语法
+    //         filename: "[name].css",
+    //         chunkFilename: "[name].css"
+    //     })
+    // ],
     module: {
         rules: [
             {
@@ -61,13 +64,21 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
+                //  test: /\.(css|scss)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,  //自动提取出css
+                    'isomorphic-style-loader',
+                    // {
+                    //     loader: 'css-loader',
+                    //     options: {
+                    //       importLoaders: 1
+                    //     }
+                    // },
+                    //  MiniCssExtractPlugin.loader,  //自动提取出css
                     'css-loader?modules&localIdentName=[name]__[local]--[hash:base64:5]'
                 ]
             },
         ]
     },
-    //  mode:"development",
-    mode:"production",
+    mode:"development",
+    //mode:"production",
 }
