@@ -25,12 +25,12 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        new MiniCssExtractPlugin({      //对css进行打包，webpack4推荐语法
-            filename: "[name].css",
-            chunkFilename: "[name].css"
-        })
-    ],
+    // plugins: [
+    //     new MiniCssExtractPlugin({      //对css进行打包，webpack4推荐语法
+    //         filename: "[name].css",
+    //         chunkFilename: "[name].css"
+    //     })
+    // ],
     module: {
         rules: [
             {
@@ -53,6 +53,7 @@ module.exports = {
                                     "regenerator": true,
                                     "useESModules": false
                                 }],
+                                //  支持类写法
                                 "@babel/plugin-proposal-class-properties"
                             ]
                         }
@@ -62,7 +63,8 @@ module.exports = {
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,  //自动提取出css
+                    'isomorphic-style-loader',
+                    //  MiniCssExtractPlugin.loader,  //自动提取出css
                     'css-loader?modules&localIdentName=[name]__[local]--[hash:base64:5]'
                 ]
             },

@@ -14,7 +14,7 @@ const ServerEntry = require('./dist/serverEntry.bundle.js');
 router.get('/', async function(req, res, next) {
   //前端渲染
   //入口文件位置 ./entry/index.js 
-  //  res.render('index');
+  res.render('index');
 
   //  后端渲染
   //  入口文件 ./entry/serverEntry.js
@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
   // const instance = React.createElement(StyleContext.Provider, { value: insertCss }, child);
   // const appString = ReactSSR.renderToString(instance);
   // res.send(template.replace('<app></app>',appString).replace('<style></style>', `<style>${[...css].join('')}</style>`));
-  ServerEntry.default(res, template)
+  //  ServerEntry.default(res, template)
 
 });
 
