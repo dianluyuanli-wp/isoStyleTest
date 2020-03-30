@@ -1,10 +1,10 @@
 const path = require('path');
-//  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     context: path.resolve(__dirname),
     entry: {
-        serverEntry: ['./entry/serverEntry.js']
+        serverEntry: ['./entry/component/index.js']
         //  serverEntry: ['./entry/component/index.js']
     },
     output: {
@@ -13,6 +13,12 @@ module.exports = {
         libraryTarget: 'commonjs2',
         publicPath: path.resolve(__dirname, 'dist')
     },
+    plugins: [
+        new MiniCssExtractPlugin({      //对css进行打包，webpack4推荐语法
+            filename: "[name].css",
+            chunkFilename: "[name].css"
+        })
+    ],
     module: {
         rules: [
             {
@@ -45,9 +51,7 @@ module.exports = {
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    'isomorphic-style-loader',
-                    //  server端渲染不能要，否则无法isomorphic-style-loader提取出css
-                    //  MiniCssExtractPlugin.loader,  //自动提取出css
+                    MiniCssExtractPlugin.loader,  //自动提取出css
                     'css-loader?modules&localIdentName=[name]__[local]--[hash:base64:5]'
                 ]
             },
