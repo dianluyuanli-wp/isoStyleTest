@@ -10,6 +10,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        //  server端跑的必须是commonjs
         libraryTarget: 'commonjs2',
         publicPath: path.resolve(__dirname, 'dist')
     },
