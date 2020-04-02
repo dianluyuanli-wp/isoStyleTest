@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const myLoader = require('./myLoader.js');
 
 module.exports = {
     context: path.resolve(__dirname),
@@ -65,7 +64,6 @@ module.exports = {
                 test: /\.(css|scss)$/,
                 use: [
                     'isomorphic-style-loader',
-                    //  myLoader,
                     //  MiniCssExtractPlugin.loader,  //自动提取出css
                     'css-loader?modules&localIdentName=[name]__[local]--[hash:base64:5]',
 
